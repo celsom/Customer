@@ -26,11 +26,13 @@ app.use(myConnection(mysql,{
 	database:'crudnodejsmysql'
 },'single'));
 
+app.use(express.urlencoded({extended: false}));
+
 // routes
 app.use('/',customerRoutes);
 
 // static files
-
+app.use(express.static(path.join(__dirname,'public')));
 
 // starting the server
 app.listen(app.get('port'),() =>{
